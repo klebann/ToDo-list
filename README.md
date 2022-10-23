@@ -1,9 +1,13 @@
 # ToDo-list
 Pure JS and CSS project for educational purposes.
 
+## Design
+![image](https://user-images.githubusercontent.com/22200025/197415056-756cfc7f-647f-4926-825f-1bcd165e651d.png)
+
+
 ## Goal
 The purpose of the application is to create a dynamic ToDo list based on localstorage.
 
-
-Demo available at https://klebann.github.io/ToDo-list/
+## Demo
+https://klebann.github.io/ToDo-list/
 
