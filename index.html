@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<title>LAB-03</title>
+	<meta name="description" content="HTML CSS Zen Garden">
+	<meta name="author" content="Jakub Kleban">
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<link rel="stylesheet" href="css/style.css">
+</head>
+
+<body onload="loadTasks()">
+	<div class="content">
+		<h1><i class="fa-solid fa-user"></i> ToDo List</h1>
+
+		<div class="wrap">
+			<div class="search">
+				<input class="searchTerm" type="text" placeholder="Search..." aria-label="Search">
+				<button class="searchButton" type="submit"><i class="fa fa-search"></i></button>
+			</div>
+		</div>
+
+		<table>
+			<thead>
+				<tr>
+					<th scope="col">#</th>
+					<th scope="col">Zadanie</th>
+					<th scope="col">Data</th>
+					<th scope="col">Akcja</th>
+				</tr>
+			</thead>
+			<tbody id="tasks">
+
+			</tbody>
+		</table>
+
+		<h2>Dodaj Zadanie:</h2>
+		<div id="add-task" class="form-inline">
+			<label for="name">Zadanie:</label>
+			<input type="text" id="name" name="name">
+			<label for="data">Data:</label>
+			<input type="datetime-local" id="date" name="date">
+			<button onClick="addTask()">
+				<i class="fa-solid fa-plus"></i> Dodaj
+			</button>
+		</div>
+	</div>
+
+
+	<script src="js/todo.js"></script>
+</body>
+
+</html>

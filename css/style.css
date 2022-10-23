@@ -1,0 +1,129 @@
+html {
+	font-family: Verdana, sans-serif;
+}
+
+.content {
+	max-width: 1280px;
+	margin: auto;
+	text-align: center;
+}
+
+h1 {
+	text-align: center;
+}
+
+.wrap {
+	margin: 20px auto;
+	padding: 0 20%;
+}
+
+.search {
+	width: 100%;
+	position: relative;
+	display: flex;
+}
+
+.searchTerm {
+	width: 100%;
+	border: 3px solid green;
+	border-right: none;
+	padding: 5px;
+	height: 20px;
+	border-radius: 5px 0 0 5px;
+	outline: none;
+}
+
+.searchButton {
+	width: 40px;
+	height: 36px;
+	border: 1px solid green;
+	background-color: darkgreen;
+	text-align: center;
+	color: #fff;
+	border-radius: 0 5px 5px 0;
+	cursor: pointer;
+	font-size: 20px;
+}
+
+table {
+	margin: auto;
+	border-collapse: collapse;
+	width: 100%;
+}
+
+table td,
+table th {
+	border: 1px solid #ddd;
+	padding: 8px;
+}
+
+table tr:nth-child(even) {
+	background-color: #ededed;
+}
+
+table tr:hover {
+	background-color: #ddd;
+}
+
+table thead th {
+	padding-top: 12px;
+	padding-bottom: 12px;
+	background-color: seagreen;
+	color: white;
+}
+
+table button {
+	background-color: #dc3545;
+	border: none;
+	padding: .375rem .75rem;
+	border-radius: .375rem;
+	font-size: 1rem;
+}
+
+table button:hover {
+	cursor: pointer;
+}
+
+.form-inline {
+	display: flex;
+	flex-flow: row wrap;
+	align-items: center;
+	justify-content: center;
+}
+
+.form-inline label {
+	margin: 5px 10px 5px 0;
+}
+
+.form-inline input {
+	vertical-align: middle;
+	margin: 5px 10px 5px 0;
+	padding: 10px;
+	background-color: #fff;
+	border: 1px solid #ddd;
+	border-radius: .375rem;
+}
+
+.form-inline button {
+	padding: 10px 20px;
+	background-color: mediumseagreen;
+	border: 1px solid #ddd;
+	color: white;
+	cursor: pointer;
+	border-radius: .375rem;
+}
+
+.form-inline button:hover {
+	background-color: darkgreen;
+}
+
+@media (max-width: 600px) {
+	.form-inline input {
+		margin: 10px 0;
+	}
+
+	.form-inline {
+		flex-direction: column;
+		align-items: stretch;
+	}
+}
