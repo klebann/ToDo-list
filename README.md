@@ -11,3 +11,8 @@ The purpose of the application is to create a dynamic ToDo list based on localst
 ## Demo
 https://klebann.github.io/ToDo-list/
 
+## Features
+* Dynamic ToDo List from LocalStorage
+* New tasks validation (3-255 chars, date in future)
+* Search bar (filtering displayed tasks)
+* 

@@ -1,3 +1,5 @@
+var filter = '';
+
 class Task {
 	id;
 	name;
@@ -82,7 +84,13 @@ function getTasks() {
 	if (tasks === null) {
 		return [];
 	}
-	return tasks;
+	
+	if (filter === '') {
+		return tasks;
+	}
+	
+	const filteredTasks = tasks.filter(task => task.name.includes(filter));
+	return filteredTasks;
 }
 
 function setTasks(tasks) {
@@ -93,5 +101,14 @@ function removeTask(id) {
 	const tasks = getTasks();
 	const newTasks = tasks.filter(task => task.id !== id);
 	setTasks(newTasks);
+	loadTasks();
+}
+
+function search() {
+	const searchBar = document.getElementById("search-bar");
+	filter = searchBar.value;
+	if (filter.length < 3) {
+		filter = '';
+	}
 	loadTasks();
 }
