@@ -17,19 +17,19 @@ class Task {
 			this.errorMsg = 'Nazwa powinna zawierać co najmniej 3 znaki';
 			return false;
 		}
-		
+
 		if (this.name.length > 255) {
 			this.errorMsg = 'Nazwa nie może mieć więcej niż 255 znaków';
 			return false;
 		}
-		
+
 		let taskDate = Date.parse(this.date);
 		let now = Date.now();
 		if (taskDate < now) {
 			this.errorMsg = 'Data musi być w przyszłości.';
 			return false;
 		}
-		
+
 		return true;
 	}
 }
@@ -55,19 +55,19 @@ function loadTasks() {
 
 function addTask() {
 	const tasks = getTasks();
-	
+
 	const newId = getLastId(tasks);
 	const name = document.getElementById('name');
 	const date = document.getElementById('date');
 	let task = new Task(newId, name.value, date.value);
-	
+
 	if (task.validate()) {
 		tasks.push(task);
 		setTasks(tasks);
 	} else {
 		window.alert(task.errorMsg);
 	}
-	
+
 	loadTasks();
 }
 
@@ -84,13 +84,17 @@ function getTasks() {
 	if (tasks === null) {
 		return [];
 	}
-	
+
 	if (filter === '') {
 		return tasks;
 	}
-	
+
 	const filteredTasks = tasks.filter(task => task.name.includes(filter));
-	return filteredTasks;
+	const highlightedTasks = filteredTasks.map(task => {
+		task.name = highlight(task.name);
+		return task;
+	});
+	return highlightedTasks;
 }
 
 function setTasks(tasks) {
@@ -111,4 +115,11 @@ function search() {
 		filter = '';
 	}
 	loadTasks();
+}
+
+function highlight(name) {
+	let index = name.indexOf(filter);
+	if (index >= 0) {
+		return name.substring(0, index) + "<span class='highlight'>" + name.substring(index, index + filter.length) + "</span>" + name.substring(index + filter.length);
+	}
 }

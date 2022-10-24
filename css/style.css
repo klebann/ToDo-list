@@ -126,3 +126,8 @@ table button:hover {
 		align-items: stretch;
 	}
 }
+
+.highlight {
+	background-color: dodgerblue;
+	color: white;
+}

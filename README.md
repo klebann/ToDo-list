@@ -15,4 +15,4 @@ https://klebann.github.io/ToDo-list/
 * Dynamic ToDo List from LocalStorage
 * New tasks validation (3-255 chars, date in future)
 * Search bar (filtering displayed tasks)
-* 
+* Highlighting the search term
