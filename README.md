@@ -16,3 +16,6 @@ https://klebann.github.io/ToDo-list/
 * New tasks validation (3-255 chars, date in future)
 * Search bar (filtering displayed tasks)
 * Highlighting the search term
+
+## ToDo:
+* Handle outside button click and save form into localstorage.

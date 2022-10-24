@@ -131,3 +131,16 @@ table button:hover {
 	background-color: dodgerblue;
 	color: white;
 }
+
+.task input {
+	padding: 10px;
+	border: 1px solid black;
+	background-color: transparent;
+	border-radius: .375rem;
+	text-align: center;
+	font-size: 18px;
+}
+
+.has-input {
+	padding: 0px;
+}

@@ -1,4 +1,5 @@
 var filter = '';
+var nowEdited = 0;
 
 class Task {
 	id;
@@ -32,6 +33,36 @@ class Task {
 
 		return true;
 	}
+
+	generateHTML() {
+		if (this.id === nowEdited) {
+			return `
+				<tr class="task" id='task-${this.id}'>
+					<th scope="row">${this.id}</th>
+					<td class="has-input">
+						<input type="text" id="task-name" name="task-name" value="${this.name}">
+					</td>
+					<td class="has-input">
+						<input type="datetime-local" id="task-date" name="task-date" value="${this.date}">
+					</td>
+					<td>
+						<button onClick="removeTask(${this.id})"><i class="fa-solid fa-trash"></i></button>
+					</td>
+				</tr>
+			`;
+		} else {
+			return `
+				<tr class="task" id='task-${this.id}' onClick='startEditing(${this.id})'>
+					<th scope="row">${this.id}</th>
+					<td>${this.name}</td>
+					<td>${this.date}</td>
+					<td>
+						<button onClick="removeTask(${this.id})"><i class="fa-solid fa-trash"></i></button>
+					</td>
+				</tr>
+			`;
+		}
+	}
 }
 
 function loadTasks() {
@@ -40,16 +71,8 @@ function loadTasks() {
 	const table = document.getElementById('tasks');
 	table.innerHTML = "";
 	tasks.forEach(task => {
-		table.innerHTML += `
-			<tr>
-					<th scope="row">${task.id}</th>
-					<td>${task.name}</td>
-					<td>${task.date}</td>
-					<td>
-						<button onClick="removeTask(${task.id})"><i class="fa-solid fa-trash"></i></button>
-					</td>
-				</tr>
-		`;
+		task = new Task(task.id, task.name, task.date);
+		table.innerHTML += task.generateHTML();
 	});
 }
 
@@ -122,4 +145,19 @@ function highlight(name) {
 	if (index >= 0) {
 		return name.substring(0, index) + "<span class='highlight'>" + name.substring(index, index + filter.length) + "</span>" + name.substring(index + filter.length);
 	}
+}
+
+function getTaskById(id) {
+	const tasks = getTasks();
+	return tasks.find(task => task.id === id);
+}
+
+function startEditing(id) {
+	if (nowEdited === id) {
+		return;
+	}
+	
+	nowEdited = id;
+	
+	loadTasks();
 }
