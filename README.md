@@ -13,10 +13,7 @@ https://klebann.github.io/ToDo-list/
 
 ## Features
 * Dynamic ToDo List from LocalStorage
-* New tasks validation (3-255 chars, date in future)
+* New tasks validation (3-255 chars, date only in future)
 * Search bar (filtering displayed tasks)
 * Highlighting the search term
 * Clicking on a task will turn it into an edit box; Clicking outside the list item saves the changes.
-
-## ToDo:
-* Handle outside button click and save form into localstorage.

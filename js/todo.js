@@ -1,5 +1,6 @@
 var filter = '';
 var nowEdited = 0;
+var firstClick = true;
 
 class Task {
 	id;
@@ -128,6 +129,8 @@ function removeTask(id) {
 	const tasks = getTasks();
 	const newTasks = tasks.filter(task => task.id !== id);
 	setTasks(newTasks);
+	nowEdited = 0;
+	firstClick = true;
 	loadTasks();
 }
 
@@ -152,12 +155,80 @@ function getTaskById(id) {
 	return tasks.find(task => task.id === id);
 }
 
-function startEditing(id) {
+function startEditing(id) {	
 	if (nowEdited === id) {
 		return;
+	}
+	
+	if (!firstClick) {
+			return;
 	}
 	
 	nowEdited = id;
 	
 	loadTasks();
+}
+
+function handleBodyClick(event) {
+	const inputName = document.getElementById("task-name");
+	const inputDate = document.getElementById("task-date");
+	
+	if (inputName === null || inputDate === null) {
+		return; //Edit input doesn't exists.
+	}
+	
+	if (nowEdited === 0) {
+		return; // Nothing is beeing edited.
+	}
+	
+	if (clickedOnEditForm(event)) {
+		return; // Clicked on edit form. Don't to anything.
+	}
+	
+	if (firstClick) {
+		firstClick = false;
+		return; // This was first click on form. Wait for seccond click.
+	}
+	
+	if (editTask()) {
+		nowEdited = 0;
+		firstClick = true;
+	
+		loadTasks();
+	}
+}
+
+function clickedOnEditForm(event) {
+	const inputName = document.getElementById("task-name");
+	const inputDate = document.getElementById("task-date");
+	
+	if((event.target == inputName) || (event.target == inputDate)) {
+		return true;
+	} else {
+		return false;
+	}
+}
+
+function editTask() {
+	const inputName = document.getElementById("task-name");
+	const inputDate = document.getElementById("task-date");
+	
+	const newTask = new Task(nowEdited, inputName.value, inputDate.value);
+	if (!newTask.validate()) {
+		console.log("Test");
+		window.alert(newTask.errorMsg);
+		return false;
+	}
+	
+	let tasks = getTasks();
+	tasks = tasks.map(task => {
+		if (task.id !== nowEdited) {
+			return task;
+		}
+		
+		return newTask;
+	});
+	
+	setTasks(tasks);
+	return true;
 }
